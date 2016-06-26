@@ -5,4 +5,7 @@
 #ifndef ROYALECLASH_CARD_H
 #define ROYALECLASH_CARD_H
 
+class Card {
+
+};
 #endif //ROYALECLASH_CARD_H
