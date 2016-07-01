@@ -5,9 +5,9 @@
 #ifndef ROYALECLASH_FURNACE_H
 #define ROYALECLASH_FURNACE_H
 
-#include "building.h"
+#include "spawning_building.h"
 
-class Furnace : public Building {
+class Furnace : public SpawningBuilding {
 
 };
 

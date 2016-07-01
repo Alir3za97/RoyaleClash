@@ -5,7 +5,10 @@
 #ifndef ROYALECLASH_CARD_H
 #define ROYALECLASH_CARD_H
 
-class Card {
+#include <QGraphicsPixmapItem>
+#include <QObject>
+
+class Card : public QObject, public QGraphicsPixmapItem{
 
 };
 #endif //ROYALECLASH_CARD_H

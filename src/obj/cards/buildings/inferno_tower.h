@@ -5,9 +5,9 @@
 #ifndef ROYALECLASH_INFERNO_TOWER_H
 #define ROYALECLASH_INFERNO_TOWER_H
 
-#include "building.h"
+#include "tower_building.h"
 
-class InfernoTower : public Building {
+class InfernoTower : public TowerBuilding {
 
 };
 
