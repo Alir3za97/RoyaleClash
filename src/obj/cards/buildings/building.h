@@ -8,6 +8,9 @@
 #include <src/obj/cards/card.h>
 
 class Building : public Card {
-
+public:
+private:
+    qreal hitpoint;
+    qreal lifetime;
 };
 #endif //ROYALECLASH_BUILDING_H

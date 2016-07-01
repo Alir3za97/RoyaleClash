@@ -9,5 +9,8 @@
 
 class Spell : public Card {
 
+public:
+private:
+    qreal radius;
 };
 #endif //ROYALECLASH_SPELL_H

@@ -3,3 +3,11 @@
 //
 
 #include "card.h"
+
+Card::Card() {
+
+}
+
+Card::Card(const QPixmap& img, QPointF pos) : QGraphicsPixmapItem(img){
+    setPos(pos);
+}
