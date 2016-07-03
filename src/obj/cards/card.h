@@ -8,6 +8,13 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 
+enum Target {
+    ground_only,
+    air_and_ground,
+    buildings,
+    None
+};
+
 class Card : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
@@ -19,13 +26,6 @@ protected:
     Target target;
     qint8 elixir_cost;
     qreal deploy_time;
-};
-
-enum Target {
-    ground_only,
-    air_and_ground,
-    buildings,
-    None
 };
 
 #endif //ROYALECLASH_CARD_H
