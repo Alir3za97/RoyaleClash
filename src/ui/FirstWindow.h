@@ -6,7 +6,7 @@
 #define ROYALECLASH_FIRSTWINDOW_H
 #include <QWidget>
 
-class FirstWindow : QWidget{
+class FirstWindow : public QWidget {
 public:
     FirstWindow(QWidget* parent = 0, Qt::WindowFlags = 0);
 };

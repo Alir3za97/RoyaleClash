@@ -17,7 +17,6 @@ enum Target {
 
 class Card : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
-
 public:
     Card();
     Card(const QPixmap&, QPointF = QPointF(0, 0));

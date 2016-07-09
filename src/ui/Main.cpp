@@ -22,5 +22,5 @@ void Main::make_stack() {
     stacked_widget = new QStackedWidget(this);
     first_window = new FirstWindow(stacked_widget);
     stacked_widget -> addWidget(first_window);
-
+    setCentralWidget(stacked_widget);
 }
