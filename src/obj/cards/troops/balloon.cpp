@@ -2,6 +2,7 @@
 // Created by mareal on 6/27/16.
 //
 
+#include <src/obj/cards/card.h>
 #include "balloon.h"
 
 Balloon::Balloon(const QPoint& pos) {
