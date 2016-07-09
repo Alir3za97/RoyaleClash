@@ -23,16 +23,20 @@ FirstWindow::FirstWindow(QWidget *parent, Qt::WindowFlags flags) : QWidget(paren
 
 void FirstWindow::make_name_input() {
     QLabel* name_label = new QLabel("Please enter your name !   :", this);
+    name_label -> setStyleSheet("color: red");
     name_label -> setGeometry(QRect(10, 590, 200, 30));
     name = new QLineEdit("Unknown", this);
     name -> setGeometry(QRect(210, 590, 170, 30));
-    name -> setStyleSheet("background: transparent;");
+    name -> setStyleSheet("background: transparent; color: red");
 }
 
 void FirstWindow::make_start_button() {
     ok = new QPushButton("start", this);
-    ok -> setGeometry(210, 630, 70, 30);
+    ok -> setGeometry(210, 630, 150, 30);
     ok -> setFlat(true);
+    ok -> setStyleSheet("color: red");
     is_training = new QCheckBox("Training", this);
     is_training -> setGeometry(100, 630, 100, 30);
+    is_training -> setStyleSheet("color: red");
+    is_training -> setFocusPolicy(Qt::NoFocus);
 }
