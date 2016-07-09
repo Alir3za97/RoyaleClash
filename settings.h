@@ -5,11 +5,14 @@
 #ifndef ROYALECLASH_SETTINGS_H
 #define ROYALECLASH_SETTINGS_H
 #include <QString>
+#include <QSize>
 
 struct Setting {
     static QString music;
     static int default_music_volume;
     static bool is_muted;
+
+    static QSize window_size;
 };
 
 #endif //ROYALECLASH_SETTINGS_H

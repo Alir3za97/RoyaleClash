@@ -19,6 +19,7 @@ private:
 
     void entertain();
     void make_stack();
+    void set_properties();
 
     QStackedWidget* stacked_widget;
     QMediaPlayer* player;
