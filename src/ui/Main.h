@@ -8,6 +8,7 @@
 #include <QStackedWidget>
 #include <QMediaPlayer>
 #include "FirstWindow.h"
+#include "Menu.h"
 
 class Main : QMainWindow {
 Q_OBJECT
@@ -20,10 +21,15 @@ private:
     void entertain();
     void make_stack();
     void set_properties();
+    void make_connections();
 
     QStackedWidget* stacked_widget;
     QMediaPlayer* player;
     FirstWindow* first_window;
+    Menu* menu;
+
+private slots:
+    void start();
 };
 
 

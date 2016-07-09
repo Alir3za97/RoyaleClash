@@ -3,6 +3,8 @@
 //
 
 #include "Main.h"
+#include "Menu.h"
+
 #include <settings.h>
 #include <QDesktopWidget>
 
@@ -10,6 +12,7 @@ Main::Main(QWidget* parent, Qt::WindowFlags flag) : QMainWindow(parent, flag) {
     entertain();
     make_stack();
     set_properties();
+    make_connections();
     show();
 }
 
@@ -36,4 +39,14 @@ void Main::set_properties() {
 
     setWindowTitle("RoyaleClash");
     setCentralWidget(stacked_widget);
+}
+
+void Main::make_connections() {
+    connect(first_window -> ok, SIGNAL(clicked()), this, SLOT(start()));
+}
+
+void Main::start() {
+    menu = new Menu(first_window -> name -> text(), first_window -> is_training -> isChecked(), stacked_widget);
+    stacked_widget -> addWidget(menu);
+    stacked_widget -> setCurrentWidget(menu);
 }

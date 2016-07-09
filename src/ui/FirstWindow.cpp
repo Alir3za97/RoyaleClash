@@ -15,15 +15,24 @@ FirstWindow::FirstWindow(QWidget *parent, Qt::WindowFlags flags) : QWidget(paren
     back->setAttribute(Qt::WA_TranslucentBackground);
     back->setGeometry(0, 0, Setting::window_size.width(), Setting::window_size.height());
 
-    //setStyleSheet("background-image: url(/home/mareal/RoyaleClash/res/img/first.jpg)");
+//    setStyleSheet("background-image: url(/home/mareal/RoyaleClash/res/img/first.jpg)");
     make_name_input();
+    make_start_button();
     show();
 }
 
 void FirstWindow::make_name_input() {
     QLabel* name_label = new QLabel("Please enter your name !   :", this);
-    name_label -> setGeometry(QRect(10, 620, 200, 30));
+    name_label -> setGeometry(QRect(10, 590, 200, 30));
     name = new QLineEdit("Unknown", this);
-    name -> setGeometry(QRect(210, 620, 170, 30));
+    name -> setGeometry(QRect(210, 590, 170, 30));
     name -> setStyleSheet("background: transparent;");
+}
+
+void FirstWindow::make_start_button() {
+    ok = new QPushButton("start", this);
+    ok -> setGeometry(210, 630, 70, 30);
+    ok -> setFlat(true);
+    is_training = new QCheckBox("Training", this);
+    is_training -> setGeometry(100, 630, 100, 30);
 }
