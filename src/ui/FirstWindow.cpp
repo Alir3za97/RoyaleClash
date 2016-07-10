@@ -9,13 +9,7 @@
 
 FirstWindow::FirstWindow(QWidget *parent, Qt::WindowFlags flags) : QWidget(parent, flags){
     resize(Setting::window_size);
-    QLabel* back = new QLabel(this);
-    back->setPixmap(QPixmap("/home/mareal/RoyaleClash/res/img/first.jpg"));
-    back->setAlignment(Qt::AlignCenter);
-    back->setAttribute(Qt::WA_TranslucentBackground);
-    back->setGeometry(0, 0, Setting::window_size.width(), Setting::window_size.height());
-
-//    setStyleSheet("background-image: url(/home/mareal/RoyaleClash/res/img/first.jpg)");
+    setStyleSheet("background-image: url(/home/mareal/RoyaleClash/res/img/first.jpg)");
     make_name_input();
     make_start_button();
     show();
@@ -36,7 +30,7 @@ void FirstWindow::make_start_button() {
     ok -> setFlat(true);
     ok -> setStyleSheet("color: red");
     is_training = new QCheckBox("Training", this);
-    is_training -> setGeometry(100, 630, 100, 30);
+    is_training -> setGeometry(50, 630, 150, 30);
     is_training -> setStyleSheet("color: red");
     is_training -> setFocusPolicy(Qt::NoFocus);
 }

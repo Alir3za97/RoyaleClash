@@ -7,4 +7,4 @@
 QString Setting::music = "felan";
 int Setting::default_music_volume = 50;
 bool Setting::is_muted = false;
-QSize Setting::window_size = QSize(400, 679);
+QSize Setting::window_size = QSize(800, 679);
