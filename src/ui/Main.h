@@ -9,6 +9,7 @@
 #include <QMediaPlayer>
 #include "FirstWindow.h"
 #include "Menu.h"
+#include "TrainingGame.h"
 
 class Main : QMainWindow {
 Q_OBJECT
@@ -27,9 +28,12 @@ private:
     QMediaPlayer* player;
     FirstWindow* first_window;
     Menu* menu;
+    TrainingGame* trainingGame;
+
 
 private slots:
     void start();
+    void startGame();
 };
 
 

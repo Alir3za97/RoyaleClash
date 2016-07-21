@@ -13,6 +13,9 @@ struct Setting {
     static bool is_muted;
 
     static QSize window_size;
+
+    static QString startIcon;
+    static QString picturesPath[15];
 };
 
 #endif //ROYALECLASH_SETTINGS_H

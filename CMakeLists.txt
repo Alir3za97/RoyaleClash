@@ -17,7 +17,7 @@ set(SOURCE_FILES main.cpp src/obj/cards/card.h src/obj/cards/card.cpp src/obj/to
         src/obj/cards/buildings/spawning_building.cpp src/obj/cards/buildings/tower_building.h
         src/obj/cards/buildings/tower_building.cpp src/ui/Main.cpp src/ui/Main.h settings.cpp settings.h
         src/ui/FirstWindow.cpp src/ui/FirstWindow.h src/ui/FirstWindow.cpp src/ui/Menu.h
-        src/ui/FirstWindow.cpp src/ui/Menu.cpp )
+        src/ui/FirstWindow.cpp src/ui/Menu.cpp src/ui/TrainingGame.cpp src/ui/TrainingGame.h)
 add_executable(RoyaleClash ${SOURCE_FILES})
 
 find_package(Qt5Core REQUIRED)
