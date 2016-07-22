@@ -50,6 +50,7 @@ void Main::start() {
     menu = new Menu(first_window -> name -> text(), first_window -> is_training -> isChecked(), stacked_widget);
     stacked_widget -> addWidget(menu);
     stacked_widget -> setCurrentWidget(menu);
+    connect(menu, SIGNAL(gameStart()), this, SLOT(startGame()));
 }
 
 void Main::startGame() {
@@ -57,5 +58,6 @@ void Main::startGame() {
         trainingGame = new TrainingGame(menu -> name, menu -> getCards());
         stacked_widget -> addWidget(trainingGame);
         stacked_widget -> setCurrentWidget(trainingGame);
+
     }
 }

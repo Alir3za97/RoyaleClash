@@ -25,12 +25,13 @@ signals:
     void gameStart();
 
 private:
-    void handleStartPushed();
 
     void set_interface();
     QGridLayout* cardsLay;
     QVector<QCheckBox*>* cards;
     QPushButton* start;
+private slots:
+    void handleStartPushed();
 };
 
 

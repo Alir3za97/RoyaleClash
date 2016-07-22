@@ -6,6 +6,9 @@
 #define ROYALECLASH_TRAININGGAME_H
 
 #include <QWidget>
+#include <QtWidgets/qboxlayout.h>
+#include <QtWidgets/qpushbutton.h>
+#include <src/obj/cards/card.h>
 
 class TrainingGame : public QWidget{
 Q_OBJECT
@@ -15,8 +18,26 @@ public:
 private:
     QString name;
     QVector<int> cards;
-private slots:
+    QPushButton* firstCard;
+    QPushButton* secondCard;
+    QPushButton* thirdCard;
+    QPushButton* fourthCard;
+    QHBoxLayout* canDeployCards;
 
+    QPushButton* pause;
+    QPushButton* mute;
+    QPushButton* back;
+
+    Card* currentCard;
+
+    void set_interface();
+
+private slots:
+    void firstCardPush();
+    void secondCardPush();
+    void thirdCardPush();
+    void fourthCardPush();
+    void setCurrentCard(int);
 };
 
 
