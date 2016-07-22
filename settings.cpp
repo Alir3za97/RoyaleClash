@@ -47,3 +47,21 @@ QString Setting::cardNames[15] = {
         "furnace",
         "inferno-tower",
 };
+
+int Setting::elixir_costs[15] = {
+        7,
+        5,
+        5,
+        3,
+        5,
+        3,
+        4,
+        5,
+        6,
+        4,
+        -1,
+        2,
+        3,
+        5,
+        5
+};

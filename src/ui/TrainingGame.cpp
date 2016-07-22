@@ -132,7 +132,7 @@ void TrainingGame::set_interface() {
     downRightCrown -> setPos(5 * scene -> width() / 6, scene -> height() - 70);
 
     elixirLabel = new QLabel(down);
-    elixirLabel -> setGeometry(Setting::window_size.width() - 200, 5, 100, 75);
+    elixirLabel -> setGeometry(Setting::window_size.width() - 100, 5, 100, 75);
     elixirLabel -> setStyleSheet("color: magenta");
 }
 
@@ -179,6 +179,9 @@ void TrainingGame::mousePressEvent(QMouseEvent* event) {
       )
         return;
     Card* card = Card::createCard(cards.at(currentCard));
+    if(elixir < Setting::elixir_costs[cards.at(currentCard)])
+        return;
+    elixir -= Setting::elixir_costs[cards.at(currentCard)];
     scene -> addItem(card);
     card -> setParent(scene);
     card -> show();

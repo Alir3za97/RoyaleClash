@@ -21,9 +21,10 @@ public:
     Card();
     Card(const QPixmap&, QPointF = QPointF(0, 0));
     static Card* createCard(int);
+    qint8 elixir_cost;
+
 protected:
     Target target;
-    qint8 elixir_cost;
     qreal deploy_time;
 };
 
