@@ -12,6 +12,8 @@
 #include <QLabel>
 #include <QtMultimedia/qmediaplayer.h>
 #include <QtWidgets/qgraphicsview.h>
+#include <src/obj/towers/king.h>
+#include <src/obj/towers/crown.h>
 
 class TrainingGame : public QGraphicsView{
 Q_OBJECT
@@ -47,6 +49,15 @@ private:
     QGraphicsPixmapItem* leftBridge;
     QGraphicsPixmapItem* rightBridge;
 
+    KingTower* topKing;
+    KingTower* downKing;
+    CrownTower* topLeftCrown;
+    CrownTower* topRightCrown;
+    CrownTower* downLeftCrown;
+    CrownTower* downRightCrown;
+
+    QTimer* timer;
+
 private slots:
     void firstCardPush();
     void secondCardPush();
@@ -54,6 +65,7 @@ private slots:
     void fourthCardPush();
     void setCurrentCard(int);
     void pauseMusic();
+    void fcingSlotForTimer();
 };
 
 

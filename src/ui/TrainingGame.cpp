@@ -21,6 +21,9 @@ TrainingGame::TrainingGame(QString name, QVector<int> cards) {
     player -> setMedia(QUrl(Setting::music));
     player -> setVolume(50);
     player -> play();
+
+    timer = new QTimer;
+
 }
 
 void TrainingGame::set_interface() {
@@ -28,10 +31,6 @@ void TrainingGame::set_interface() {
     setFixedSize(Setting::window_size);
 
     setStyleSheet("background-color: #0073e6");
-//    QLabel* label = new QLabel(this);
-//    label -> setGeometry(0, 0, Setting::window_size.width(), Setting::window_size.height());
-//    label -> setStyleSheet("background-color: #0073e6");
-
     QLabel* down = new QLabel(this);
     down -> setGeometry(0, Setting::window_size.height() - 85, Setting::window_size.width(), 85);
     down -> setStyleSheet("background-color: black");
@@ -45,18 +44,22 @@ void TrainingGame::set_interface() {
     firstCard = new QPushButton(down);
     firstCard -> setIconSize(QSize(70, 70));
     firstCard -> setGeometry(QRect(Setting::window_size.width() / 2 - 200, 5, 75, 75));
+    firstCard -> setFocusPolicy(Qt::NoFocus);
     connect(firstCard, SIGNAL(clicked()), SLOT(firstCardPush()));
     secondCard = new QPushButton(down);
     secondCard -> setIconSize(QSize(70, 70));
     secondCard -> setGeometry(QRect(Setting::window_size.width() / 2 - 100, 5, 75, 75));
+    secondCard -> setFocusPolicy(Qt::NoFocus);
     connect(secondCard, SIGNAL(clicked()), SLOT(secondCardPush()));
     thirdCard = new QPushButton(down);
     thirdCard -> setIconSize(QSize(70, 70));
     thirdCard -> setGeometry(QRect(Setting::window_size.width() / 2, 5, 75, 75));
+    thirdCard -> setFocusPolicy(Qt::NoFocus);
     connect(thirdCard, SIGNAL(clicked()), SLOT(thirdCardPush()));
     fourthCard = new QPushButton(down);
     fourthCard -> setIconSize(QSize(70, 70));
     fourthCard -> setGeometry(QRect(Setting::window_size.width() / 2 + 100, 5, 75, 75));
+    fourthCard -> setFocusPolicy(Qt::NoFocus);
     connect(fourthCard, SIGNAL(clicked()), SLOT(fourthCardPush()));
 
     firstCard -> setIcon(QIcon(Setting::picturesPath[cards.at(0)]));
@@ -86,25 +89,48 @@ void TrainingGame::set_interface() {
 
     pause = new QPushButton(top);
     pause -> setIconSize(QSize(75, 75));
-    pause -> setIcon(QIcon("/home/alireza/RoyaleClash/res/img/pause.png"));
+    pause -> setIcon(QIcon("/home/mareal/RoyaleClash/res/img/pause.png"));
     pause -> setFocusPolicy(Qt::NoFocus);
     connect(pause, SIGNAL(clicked()), this, SLOT(pauseMusic()));
     back = new QPushButton(top);
     back -> setIconSize(QSize(75, 75));
-    back -> setIcon(QIcon("/home/alireza/RoyaleClash/res/img/back.png"));
+    back -> setIcon(QIcon("/home/mareal/RoyaleClash/res/img/back.png"));
     back -> setFocusPolicy(Qt::NoFocus);
     mute = new QPushButton(top);
     mute -> setIconSize(QSize(75, 75));
-    mute -> setIcon(QIcon("/home/alireza/RoyaleClash/res/img/mute.png"));
+    mute -> setIcon(QIcon("/home/mareal/RoyaleClash/res/img/mute.png"));
     mute -> setFocusPolicy(Qt::NoFocus);
 
     back -> setGeometry(5, 5, 75, 75);
     pause -> setGeometry(Setting::window_size.width() / 2 - 75 / 2, 5, 75, 75);
     mute -> setGeometry(Setting::window_size.width() - 80, 5, 75, 75);
+
+    topKing = new KingTower();
+    scene -> addItem(topKing);
+    topKing -> setPos(scene -> width() / 2 - 40, 100);
+
+    downKing = new KingTower();
+    scene -> addItem(downKing);
+    downKing -> setPos(scene -> width() / 2 - 40, scene -> height() - 30);
+
+    topLeftCrown = new CrownTower();
+    scene -> addItem(topLeftCrown);
+    topLeftCrown -> setPos(scene -> width() / 6 - 70, 140);
+
+    topRightCrown = new CrownTower();
+    scene -> addItem(topRightCrown);
+    topRightCrown -> setPos(5 * scene -> width() / 6, 140);
+
+    downLeftCrown = new CrownTower();
+    scene -> addItem(downLeftCrown);
+    downLeftCrown -> setPos(scene -> width() / 6 - 70, scene -> height() - 70);
+
+    downRightCrown = new CrownTower();
+    scene -> addItem(downRightCrown);
+    downRightCrown -> setPos(5 * scene -> width() / 6, scene -> height() - 70);
 }
 
 void TrainingGame::setCurrentCard(int number) {
-    std :: cout << number << " " << cards.size () << std :: endl;
     int tmp = cards[number];
 
     cards[number] = cards[4];
@@ -140,14 +166,17 @@ void TrainingGame::fourthCardPush() {
 }
 
 void TrainingGame::mousePressEvent(QMouseEvent* event) {
-    if(currentCard == -1 || event -> pos().y() > scene -> height() + 40 || event -> pos().y() < 90)
+    if(currentCard == -1 ||
+       event -> pos().y() > scene -> height() + 40 ||
+       event -> pos().y() < 90 ||
+       event -> pos().x() > scene -> width() - 30
+      )
         return;
     Card* card = Card::createCard(cards.at(currentCard));
     scene -> addItem(card);
     card -> setParent(scene);
     card -> show();
     card -> setPos(event -> pos());
-    std :: cout << scene -> items().size() << std::endl;
     current -> setIcon(QIcon());
     setCurrentCard(currentCard);
     currentCard = -1;
@@ -155,4 +184,8 @@ void TrainingGame::mousePressEvent(QMouseEvent* event) {
 
 void TrainingGame::pauseMusic() {
     player -> setMuted(!player -> isMuted());
+}
+
+void TrainingGame::fcingSlotForTimer() {
+    
 }
