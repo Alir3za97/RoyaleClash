@@ -34,6 +34,7 @@ private:
 private slots:
     void start();
     void startGame();
+    void backToMenu();
 };
 
 

@@ -6,6 +6,7 @@
 #include <QtWidgets/qlabel.h>
 #include <iostream>
 #include "TrainingGame.h"
+#include <QTimer>
 #include <QMouseEvent>
 
 TrainingGame::TrainingGame(QString name, QVector<int> cards) {
@@ -18,12 +19,13 @@ TrainingGame::TrainingGame(QString name, QVector<int> cards) {
     currentCard = -1;
     show();
     player = new QMediaPlayer(this);
-    player -> setMedia(QUrl(Setting::music));
+    player -> setMedia(QUrl::fromLocalFile(Setting::inmusic));
     player -> setVolume(50);
     player -> play();
-
-    timer = new QTimer;
-
+    elixir = 5;
+    timer = new QTimer();
+    timer -> start(100);
+    connect(timer, SIGNAL(timeout()), this, SLOT(fcingSlotForTimer()));
 }
 
 void TrainingGame::set_interface() {
@@ -91,7 +93,6 @@ void TrainingGame::set_interface() {
     pause -> setIconSize(QSize(75, 75));
     pause -> setIcon(QIcon("/home/mareal/RoyaleClash/res/img/pause.png"));
     pause -> setFocusPolicy(Qt::NoFocus);
-    connect(pause, SIGNAL(clicked()), this, SLOT(pauseMusic()));
     back = new QPushButton(top);
     back -> setIconSize(QSize(75, 75));
     back -> setIcon(QIcon("/home/mareal/RoyaleClash/res/img/back.png"));
@@ -100,6 +101,7 @@ void TrainingGame::set_interface() {
     mute -> setIconSize(QSize(75, 75));
     mute -> setIcon(QIcon("/home/mareal/RoyaleClash/res/img/mute.png"));
     mute -> setFocusPolicy(Qt::NoFocus);
+    connect(mute, SIGNAL(clicked()), this, SLOT(pauseMusic()));
 
     back -> setGeometry(5, 5, 75, 75);
     pause -> setGeometry(Setting::window_size.width() / 2 - 75 / 2, 5, 75, 75);
@@ -128,6 +130,10 @@ void TrainingGame::set_interface() {
     downRightCrown = new CrownTower();
     scene -> addItem(downRightCrown);
     downRightCrown -> setPos(5 * scene -> width() / 6, scene -> height() - 70);
+
+    elixirLabel = new QLabel(down);
+    elixirLabel -> setGeometry(Setting::window_size.width() - 200, 5, 100, 75);
+    elixirLabel -> setStyleSheet("color: magenta");
 }
 
 void TrainingGame::setCurrentCard(int number) {
@@ -187,5 +193,8 @@ void TrainingGame::pauseMusic() {
 }
 
 void TrainingGame::fcingSlotForTimer() {
-    
+    elixir += .1;
+    if(elixir > 10)
+        elixir = 10;
+    elixirLabel -> setNum(elixir);
 }

@@ -19,7 +19,7 @@ Main::Main(QWidget* parent, Qt::WindowFlags flag) : QMainWindow(parent, flag) {
 
 void Main::entertain() {
     player = new QMediaPlayer(this);
-    player -> setMedia(QUrl::fromLocalFile(Setting::music));
+    player -> setMedia(QUrl::fromLocalFile(Setting::outmusic));
     player -> setVolume(Setting::default_music_volume);
     player -> setMuted(Setting::is_muted);
     player -> play();
@@ -56,8 +56,14 @@ void Main::start() {
 void Main::startGame() {
     if (menu -> is_training) {
         trainingGame = new TrainingGame(menu -> name, menu -> getCards());
+        connect(trainingGame -> back, SIGNAL(clicked()), this, SLOT(backToMenu()));
         stacked_widget -> addWidget(trainingGame);
         stacked_widget -> setCurrentWidget(trainingGame);
-
+        player -> stop();
     }
+}
+
+void Main::backToMenu() {
+    delete trainingGame;
+    stacked_widget -> setCurrentWidget(menu);
 }

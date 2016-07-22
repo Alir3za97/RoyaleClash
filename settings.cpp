@@ -4,7 +4,8 @@
 
 #include "settings.h"
 
-QString Setting::music = "felan";
+QString Setting::outmusic = "/home/mareal/RoyaleClash/res/msc/outgame.ogg";
+QString Setting::inmusic = "/home/mareal/RoyaleClash/res/msc/ingame.mp3";
 int Setting::default_music_volume = 50;
 bool Setting::is_muted = false;
 QSize Setting::window_size = QSize(800, 679);

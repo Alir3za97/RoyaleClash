@@ -8,7 +8,8 @@
 #include <QSize>
 
 struct Setting {
-    static QString music;
+    static QString outmusic;
+    static QString inmusic;
     static int default_music_volume;
     static bool is_muted;
 

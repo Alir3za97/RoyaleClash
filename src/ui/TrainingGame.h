@@ -24,9 +24,8 @@ public:
     QPushButton* back;
 private:
 
-    void set_interface();
-    void mousePressEvent(QMouseEvent*);
-
+    qreal elixir;
+    QLabel* elixirLabel;
     QString name;
     QVector<int> cards;
     QPushButton* firstCard;
@@ -57,6 +56,9 @@ private:
     CrownTower* downRightCrown;
 
     QTimer* timer;
+
+    void set_interface();
+    void mousePressEvent(QMouseEvent*);
 
 private slots:
     void firstCardPush();
