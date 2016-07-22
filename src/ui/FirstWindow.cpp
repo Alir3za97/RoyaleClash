@@ -6,13 +6,16 @@
 #include <settings.h>
 #include <QLabel>
 #include <QHBoxLayout>
+#include <QtMultimedia/qmediaplayer.h>
 
 FirstWindow::FirstWindow(QWidget *parent, Qt::WindowFlags flags) : QWidget(parent, flags){
     resize(Setting::window_size);
-    setStyleSheet("background-image: url(/home/mareal/RoyaleClash/res/img/first.jpg)");
+    setStyleSheet("background-image: url(/home/alireza/RoyaleClash/res/img/first.jpg)");
     make_name_input();
     make_start_button();
     show();
+
+
 }
 
 void FirstWindow::make_name_input() {

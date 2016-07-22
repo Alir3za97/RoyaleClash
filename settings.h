@@ -16,6 +16,7 @@ struct Setting {
 
     static QString startIcon;
     static QString picturesPath[15];
+    static QString cardNames[15];
 };
 
 #endif //ROYALECLASH_SETTINGS_H

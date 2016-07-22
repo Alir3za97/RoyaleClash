@@ -20,7 +20,7 @@ Q_OBJECT
 public:
     Card();
     Card(const QPixmap&, QPointF = QPointF(0, 0));
-
+    static Card* createCard(int);
 protected:
     Target target;
     qint8 elixir_cost;

@@ -10,7 +10,7 @@
 class Balloon : public Troop {
 
 public:
-    Balloon(const QPoint&);
+    Balloon();
 private:
 };
 #endif //ROYALECLASH_BALLOON_H

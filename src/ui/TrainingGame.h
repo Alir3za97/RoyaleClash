@@ -9,13 +9,22 @@
 #include <QtWidgets/qboxlayout.h>
 #include <QtWidgets/qpushbutton.h>
 #include <src/obj/cards/card.h>
+#include <QLabel>
+#include <QtMultimedia/qmediaplayer.h>
+#include <QtWidgets/qgraphicsview.h>
 
-class TrainingGame : public QWidget{
+class TrainingGame : public QGraphicsView{
 Q_OBJECT
 
 public:
     TrainingGame(QString, QVector<int>);
+
+    QPushButton* back;
 private:
+
+    void set_interface();
+    void mousePressEvent(QMouseEvent*);
+
     QString name;
     QVector<int> cards;
     QPushButton* firstCard;
@@ -26,11 +35,17 @@ private:
 
     QPushButton* pause;
     QPushButton* mute;
-    QPushButton* back;
 
-    Card* currentCard;
+    QPushButton* current;
+    int currentCard;
 
-    void set_interface();
+    QMediaPlayer* player;
+
+    QGraphicsScene* scene;
+
+    QGraphicsPixmapItem* river;
+    QGraphicsPixmapItem* leftBridge;
+    QGraphicsPixmapItem* rightBridge;
 
 private slots:
     void firstCardPush();
@@ -38,6 +53,7 @@ private slots:
     void thirdCardPush();
     void fourthCardPush();
     void setCurrentCard(int);
+    void pauseMusic();
 };
 
 

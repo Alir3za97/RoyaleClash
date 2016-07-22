@@ -5,7 +5,7 @@
 #include <src/obj/cards/card.h>
 #include "balloon.h"
 
-Balloon::Balloon(const QPoint& pos) {
+Balloon::Balloon() {
     target = buildings;
     damage_area = 0;
     damage = 600;
